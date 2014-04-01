@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "a-csv": "2.0.0"
+    "a-csv": "0.2.0"
   },
   "scripts": {
     "test": "node test/run.js"
