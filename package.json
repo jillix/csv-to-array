@@ -1,0 +1,27 @@
+{
+  "name": "csv-to-array",
+  "version": "0.0.1",
+  "description": "A small NPM library for converting CSV files to JSON arrays.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "a-csv": "2.0.0"
+  },
+  "scripts": {
+    "test": "node test/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jillix/csv-to-array.git"
+  },
+  "keywords": [
+    "csv",
+    "to",
+    "array",
+    "nodejs"
+  ],
+  "author": "jillix GmbH <contact@jillix.com>",
+  "license": "MIT"
+}
