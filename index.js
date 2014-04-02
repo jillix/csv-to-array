@@ -10,6 +10,7 @@ var CSV = require ("a-csv");
  *      - csvOptions: the options that will be passed to the a-csv module
  *      - file: the CSV file path
  *      - collumns: an array of strings
+ *    @callback: the callback function
  *
  *  This function converts the content from a csv file into
  *  a json array using a-csv module.
