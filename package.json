@@ -1,6 +1,6 @@
 {
   "name": "csv-to-array",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A small NPM library for converting CSV files to JSON arrays.",
   "main": "index.js",
   "directories": {
