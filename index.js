@@ -1,5 +1,5 @@
 // Dependencies
-var CSV = require ("a-csv");
+var CSV = require("a-csv");
 
 /**
  * CsvToArray
@@ -45,67 +45,52 @@ var CSV = require ("a-csv");
  * @function
  * @param {Object} options Object containing the following fields:
  *
- *  - `csvOptions` (Object): The options that will be passed to the `a-csv` module.
+ *  - `csvOptions` (Object): The options that will be passed to the `a-csv` module (default: `{}`).
  *  - `file` (String): The CSV file path.
  *  - `collumns` (Array): An array of strings with the columns from CSV file.
  *
  * @param {Function} callback The callback function.
  * @return {undefined}
  */
-var CsvToArray = module.exports = function (options, callback) {
+var CsvToArray = module.exports = function(options, callback) {
 
-    // validate callback
-    callback = callback || function () {};
+    // Validate callback
+    callback = callback || function() {};
     if (typeof callback !== "function") {
-        throw new Error ("callback must be a function");
+        throw new Error("callback must be a function");
     }
 
-    // force options to be an object
-    options = Object (options);
+    // Set options defaults.
+    options = Object(options);
+    options.csvOptions = Object(options.csvOptions);
+    options.file = String(options.file);
 
-    // force csvoptions to be an object
-    options.csvOptions = Object (options.csvOptions);
-
-    // force file to be a string
-    options.file = String (options.file);
-
-    // validate columns (non empty array)
+    // Validate columns (non empty array)
     if (!options.columns || !options.columns.length || options.columns.constructor !== Array) {
-        return callback ("columns must be a non empty array");
+        return callback("columns must be a non empty array");
     }
 
-    // this will be the array generated from csv data
+    // This will be the array generated from csv data
     var array = [];
 
-    // start csv parsing
-    CSV.parse(options.file, options.csvOptions, function (err, row, next) {
-
-        // handle error
+    // Start csv parsing
+    CSV.parse(options.file, options.csvOptions, function(err, row, next) {
         if (err) {
-            return callback (err);
+            return callback(err);
         }
 
-        // not the last row
         if (row !== null) {
-
-            // row --> object
             var cRow = {};
 
-            // each column from row
+            // Each column from row
             for (var i = 0; i < options.columns.length; ++i) {
-
-                // column --> key in object
                 cRow[options.columns[i]] = row[i];
             }
 
-            // push the row in the array
             array.push(cRow);
-
-            // next row
             return next();
         }
 
-        // finally send the response
-        callback (null, array);
+        callback(null, array);
     });
 };
