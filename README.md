@@ -1,88 +1,71 @@
-csv-to-array
-===========
+CSV To Array
+============
+A library for converting CSV files to JSON arrays.
 
-A small NPM library for converting CSV files to JSON arrays.
+# Installation
+Run the following commands to download and install the application:
 
-# Example
 
-Having a file named `input.csv` that contains:
+# Documentation
+## `CsvToArray(options, callback)`
+Converts CSV files to JSON arrays.
 
-```
-11;12;13
-21;22;23
-31;32;33
-41;42;43
-```
+Example
 
-you can convert it into array using:
+ - File content:
+
+   ```csv
+   1;2;3
+   4;5;6
+   ```
 
 ```js
-// require the library
-var CsvToArray = require ("csv-to-array");
-
-// and use it
-CsvToArray ({
-    csvOptions: {
-        delimiter: ";"
-    }
-  , file: __dirname + "/input.csv"
-  , columns: [
-        "Head 1"
-      , "Head 2"
-      , "Head 3"
-    ]
-}, function (err, response) {
-    console.log(err || JSON.stringify(response, null, 4));
+var columns = ["column1", "column2", "column3"];
+require("csv-to-array")({
+   file: "path/to/input/file.csv",
+   columns: columns
+}, function (err, array) {
+  console.log(err || array);
 });
 ```
 
-You can test it using `npm test`:
+Output:
 
-```sh
-$ npm test
-
-> csv-to-array@0.0.1 test /home/.../csv-to-json
-> node test/run.js
-
+```json
 [
     {
-        "Head 1": "11",
-        "Head 2": "12",
-        "Head 3": "13"
+        "column1": "1",
+        "column2": "2",
+        "column3": "3"
     },
     {
-        "Head 1": "21",
-        "Head 2": "22",
-        "Head 3": "23"
-    },
-    {
-        "Head 1": "31",
-        "Head 2": "32",
-        "Head 3": "33"
-    },
-    {
-        "Head 1": "41",
-        "Head 2": "42",
-        "Head 3": "43"
+        "column1": "4",
+        "column2": "5",
+        "column3": "6"
     }
 ]
 ```
 
-## How to use
+### Params
+- **Object** `options`: Object containing the following fields:
+ - `csvOptions` (Object): The options that will be passed to the `a-csv` module (default: `{}`).
+ - `file` (String): The CSV file path.
+ - `collumns` (Array): An array of strings with the columns from CSV file.
 
-### `CsvToArray(@options, @callback)`
+- **Function** `callback`: The callback function.
 
- - `@options`: object containing the following fields:
-   - `csvOptions`: the options that will be passed to the a-csv module
-   - `file`: the CSV file path
-   - `collumns`: an array of strings
 
- - `@callback`: the callback function (first argument will be `err`, the second one will be an array representing the converted CSV)
 
-## Changelog
+# How to contribute
 
-### `v0.1.0`
- - Initial release
+1. File an issue in the repository, using the bug tracker, describing the
+   contribution you'd like to make. This will help us to get you started on the
+   right foot.
+2. Fork the project in your account and create a new branch:
+   `your-great-feature`.
+3. Commit your changes in that branch.
+4. Open a pull request, and reference the initial issue in the pull request
+   message.
 
-## License
-See LICENSE file.
+# License
+See the [LICENSE](./LICENSE) file.
