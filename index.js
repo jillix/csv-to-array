@@ -57,7 +57,7 @@ var CsvToArray = module.exports = function(options, callback) {
     // Validate callback
     callback = callback || function() {};
     if (typeof callback !== "function") {
-        throw new Error("callback must be a function");
+        throw new Error(new Error("callback must be a function"));
     }
 
     // Set options defaults.
@@ -67,7 +67,7 @@ var CsvToArray = module.exports = function(options, callback) {
 
     // Validate columns (non empty array)
     if (!options.columns || !options.columns.length || options.columns.constructor !== Array) {
-        return callback("columns must be a non empty array");
+        return callback(new Error("columns must be a non empty array"));
     }
 
     // This will be the array generated from csv data
