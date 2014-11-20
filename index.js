@@ -1,42 +1,58 @@
-// dependencies
+// Dependencies
 var CSV = require ("a-csv");
 
 /**
- *  csv-to-json
- *  A small NPM library for converting CSV files to JSON arrays.
+ * CsvToArray
+ * Converts CSV files to JSON arrays.
  *
- *  Arguments
- *    @options: object containing the following fields:
- *      - csvOptions: the options that will be passed to the a-csv module
- *      - file: the CSV file path
- *      - collumns: an array of strings
- *    @callback: the callback function
+ * Example
  *
- *  This function converts the content from a csv file into
- *  a json array using a-csv module.
+ *  - File content:
  *
- *  e.g.
- *    CSV file content:
- *      1;2;3
- *      4;5;6
- *    columns: ["column1", "column2", "column3"]
+ *    ```csv
+ *    1;2;3
+ *    4;5;6
+ *    ```
  *
- *    =>
- *      [
- *          {
- *              "column1": "1",
- *              "column2": "2",
- *              "column3": "3"
- *          },
- *          {
- *              "column1": "4",
- *              "column2": "5",
- *              "column3": "6"
- *          }
- *      ]
+ * ```js
+ * var columns = ["column1", "column2", "column3"];
+ * require("csv-to-array")({
+ *    file: "path/to/input/file.csv",
+ *    columns: columns
+ * }, function (err, array) {
+ *   console.log(err || array);
+ * });
+ * ```
  *
- * */
-module.exports = function (options, callback) {
+ * Output:
+ *
+ * ```json
+ * [
+ *     {
+ *         "column1": "1",
+ *         "column2": "2",
+ *         "column3": "3"
+ *     },
+ *     {
+ *         "column1": "4",
+ *         "column2": "5",
+ *         "column3": "6"
+ *     }
+ * ]
+ * ```
+ *
+ * @name CsvToArray
+ * @function
+ * @param {Object} options Object containing the following fields:
+ *
+ *  - `csvOptions` (Object): The options that will be passed to the `a-csv` module.
+ *  - `file` (String): The CSV file path.
+ *  - `collumns` (Array): An array of strings with the columns from CSV file.
+ *
+ * @param {Function} callback The callback function.
+ * @return {undefined}
+ */
+var CsvToArray = module.exports = function (options, callback) {
 
     // validate callback
     callback = callback || function () {};
