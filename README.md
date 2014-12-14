@@ -7,7 +7,9 @@ Run the following commands to download and install the application:
 
 Install
 =======
-    npm install csv-to-array
+```sh
+$ npm install csv-to-array
+```
 
 
 # Documentation
