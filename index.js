@@ -1,6 +1,5 @@
 // Dependencies
 var CSV = require("a-csv");
-
 /**
  * CsvToArray
  * Converts CSV files to JSON arrays.
@@ -66,7 +65,9 @@ var CsvToArray = module.exports = function(options, callback) {
     options.file = String(options.file);
 
     // Validate columns (non empty array)
-    if (!options.columns || !options.columns.length || options.columns.constructor !== Array) {
+    if (options.columns === true) {
+        options.columns = [];
+    } else if (!options.columns || !options.columns.length || options.columns.constructor !== Array) {
         return callback(new Error("columns must be a non empty array"));
     }
 
@@ -78,7 +79,10 @@ var CsvToArray = module.exports = function(options, callback) {
         if (err) {
             return callback(err);
         }
-
+        if (options.columns.length === 0) {
+            options.columns = row;
+            return next();
+        }
         if (row !== null) {
             var cRow = {};
 
