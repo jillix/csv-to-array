@@ -1,6 +1,6 @@
 {
   "name": "csv-to-array",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library for converting CSV files to JSON arrays.",
   "main": "index.js",
   "directories": {
@@ -28,8 +28,7 @@
     "url": "https://github.com/jillix/csv-to-array/issues"
   },
   "homepage": "https://github.com/jillix/csv-to-array",
-  "contributors": [{
-    "name": "Wojciech Adaszynski",
-    "email": "wojciech.adaszynski@gmail.com"
-  }]
+  "contributors": [
+    "Wojciech Adaszynski <wojciech.adaszynski@gmail.com>"
+  ]
 }
