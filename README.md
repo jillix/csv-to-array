@@ -3,7 +3,6 @@ CSV To Array
 A library for converting CSV files to JSON arrays.
 
 # Installation
-Run the following commands to download and install the application:
 
 ```sh
 $ npm install csv-to-array --save
